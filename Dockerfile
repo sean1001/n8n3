@@ -17,10 +17,11 @@ ENV N8N_ENCRYPTION_KEY=$ENCRYPTION_KEY
 
 USER root
 
-# Install Python and yt-dlp dependencies
+# Install Python, curl and other dependencies
 RUN apk add --no-cache \
     python3 \
-    py3-pip
+    py3-pip \
+    curl
 
 # Install yt-dlp
 RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
