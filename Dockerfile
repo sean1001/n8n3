@@ -17,15 +17,20 @@ ENV N8N_ENCRYPTION_KEY=$ENCRYPTION_KEY
 
 USER root
 
-# Install Python, curl and other dependencies
+# Install Python, curl, and other dependencies
 RUN apk add --no-cache \
     python3 \
     py3-pip \
-    curl
+    curl \
+    nodejs \
+    npm
 
 # Install yt-dlp
 RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
     && chmod a+rx /usr/local/bin/yt-dlp
+
+# Install yt-dlp-wrap via npm
+RUN npm install -g yt-dlp-wrap
 
 # Install the community node
 RUN cd /usr/local/lib/node_modules/n8n && \
