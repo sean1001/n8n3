@@ -25,17 +25,10 @@ RUN apk add --no-cache \
     nodejs \
     npm
 
-# Install yt-dlp
-RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
-    && chmod a+rx /usr/local/bin/yt-dlp
-
-# Install yt-dlp-wrap via npm
-RUN npm install -g yt-dlp-wrap
-
 # Install the community node
-RUN cd /usr/local/lib/node_modules/n8n && \
-    npm install @endcycles/n8n-nodes-youtube-transcript
+RUN cd /usr/local/lib/node_modules/n8n
+
 
 USER node
 
-CMD ["n8n", "start"]
+CMD ["n8n start"]
